@@ -1,0 +1,129 @@
+.contact-section {
+    padding-block: 5rem;
+    background-color: var(--bg-color);
+}
+
+.contact-header {
+    max-width: 750px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.contact-header > p {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: var(--fw-bold);
+    letter-spacing: 2px;
+    margin-bottom: 0.8rem;
+}
+
+.contact-header h2 {
+    color: var(--text-color);
+    font-size: 2.8rem;
+    margin-bottom: 1rem;
+}
+
+.contact-header span {
+    display: block;
+    color: var(--second-text-color);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    width: 100%;
+    max-width: 650px;
+    margin-inline: auto;
+}
+.contact-form label {
+    color: var(--text-color);
+    font-weight: var(--fw-bold);
+    margin-top: 0.8rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    background-color: white;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input {
+    height: 55px;
+}
+
+.contact-form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #999;
+}
+
+.contact-form button {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1rem;
+    font-weight: var(--fw-bold);
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.contact-form button:hover {
+    opacity: 0.85;
+}
+
+.contact-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.contact-feedback {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: var(--fw-bold);
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+
+    .contact-section {
+        padding-block: 3rem;
+    }
+
+    .contact-header {
+        padding-inline: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-header h2 {
+        font-size: 2rem;
+    }
+
+    .contact-header span {
+        font-size: 0.95rem;
+    }
+
+    .contact-form {
+        padding-inline: 1rem;
+    }
+}
