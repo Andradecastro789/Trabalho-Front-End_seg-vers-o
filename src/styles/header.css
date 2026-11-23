@@ -1,3 +1,8 @@
+
+/* ========================================
+   HEADER
+======================================== */
+
 .header-wrapper {
     width: 100%;
     background: var(--bg-color);
@@ -10,6 +15,9 @@
     justify-content: space-between;
     gap: 1.5rem;
 }
+
+/* LOGO */
+
 .logo {
     display: flex;
     flex-direction: column;
@@ -25,6 +33,8 @@
     font-size: 0.7rem;
     letter-spacing: 0.05rem;
 }
+
+/* NAVEGAÇÃO */
 
 .header-nav {
     display: flex;
@@ -54,6 +64,7 @@
     color: var(--primary-color);
 }
 
+/* AÇÕES DO HEADER */
 
 .header-actions {
     display: none;
@@ -73,101 +84,218 @@
     color: var(--second-text-color);
 }
 
+/* ========================================
+   MENU MOBILE
+======================================== */
+
+.mobile-menu {
+    display: block;
+    position: relative;
+    z-index: 12;
+}
+
+/* BOTÕES DOS ÍCONES SVG */
+
+.mobile-menu .btn-wrapper {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 8px;
+}
+
+/* TAMANHO DOS ÍCONES */
+
+.mobile-menu .btn-wrapper img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    display: block;
+}
+
+/* CONTEÚDO DO MENU */
+
+.mobile-menu-content {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    padding: 2rem 1rem;
+
+    background: var(--bg-color);
+    overflow-y: auto;
+}
+
+/* CABEÇALHO DO MENU MOBILE */
+
+.mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+/* LINKS DO MENU MOBILE */
+
+.mobile-menu-content ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 1.8rem;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+}
+
+.mobile-menu-content a {
+    color: var(--primary-color);
+    font-size: var(--fs-lg);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-content a:hover {
+    color: var(--second-text-color);
+}
+
+/* ========================================
+   HERO
+======================================== */
 
 #hero {
     background: var(--light-gray);
     border-top: 0.125rem solid #f4dce5;
+
     min-height: 580px;
     height: 80vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     position: relative;
     overflow: hidden;
+
     text-align: center;
     padding: 3rem 1.5rem;
 }
 
+/* DECORAÇÃO DO HERO */
 
 #hero .hero-decoration {
     position: absolute;
     right: 0;
     top: 0;
+
     width: 40%;
     height: 100%;
+
     background: var(--secondary-color);
     border-radius: 50% 0 0 50%;
+
     opacity: 0.35;
 }
-
 
 #hero .hero-circle {
     position: absolute;
     top: 20%;
     right: 15%;
+
     width: 180px;
     height: 180px;
+
     border-radius: 50%;
     background: var(--primary-color);
     color: white;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     font-size: 80px;
 }
-
 
 #hero .hero-decoration-small {
     position: absolute;
     bottom: 15%;
     right: 10%;
+
     font-size: 65px;
     color: var(--primary-color);
 }
 
+/* CONTEÚDO DO HERO */
+
 #hero .content {
     position: relative;
     z-index: 2;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
     width: 100%;
     max-width: 850px;
+
     margin: auto;
     text-align: center;
     gap: 1.5rem;
 }
 
-
 #hero .content h1 {
     width: 100%;
     max-width: 700px;
+
     margin: 0 auto;
+
     font-size: 2rem;
     line-height: 1.3;
     text-align: center;
 }
 
-
 #hero .content p {
     width: 100%;
     max-width: 600px;
+
     margin: 0 auto;
+
     color: var(--second-text-color);
     font-size: 0.95rem;
     line-height: 1.7;
+
     text-align: center;
 }
 
+/* BOTÕES DO HERO */
 
 #hero .hero-buttons {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
     gap: 25px;
     width: 100%;
+
     margin: 0 auto;
     flex-wrap: nowrap;
 }
@@ -177,71 +305,14 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     margin: 0;
     white-space: nowrap;
 }
 
-
-.mobile-menu {
-    display: block;
-    position: relative;
-    z-index: 12;
-}
-
-.mobile-menu .btn-wrapper {
-    border: none;
-    background: transparent;
-    color: var(--primary-color);
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-.mobile-menu-content {
-    position: fixed;
-    inset: 0;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    min-height: 100vh;
-    padding: 2rem 1rem;
-    background: var(--bg-color);
-}
-
-.mobile-menu-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 3rem;
-}
-
-.mobile-menu-header .btn-wrapper {
-    font-size: 1.5rem;
-}
-
-.mobile-menu-content ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.8rem;
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-}
-
-.mobile-menu-content a {
-    color: var(--primary-color);
-    font-size: var(--fs-lg);
-    text-decoration: none;
-}
-
-.mobile-menu-content a:hover {
-    color: var(--second-text-color);
-}
-
+/* ========================================
+   TELAS GRANDES
+======================================== */
 
 @media (width >= 1280px) {
 
@@ -264,6 +335,7 @@
     #hero {
         background: var(--bg-color);
         border-top: none;
+
         height: 80vh;
         min-height: 580px;
     }
@@ -304,6 +376,9 @@
     }
 }
 
+/* ========================================
+   TABLETS E CELULARES
+======================================== */
 
 @media (width < 768px) {
 
@@ -339,9 +414,11 @@
     #hero .hero-circle {
         width: 90px;
         height: 90px;
+
         font-size: 40px;
         right: 5%;
         top: 5%;
+
         opacity: 0.3;
     }
 
@@ -350,4 +427,5 @@
         right: 5%;
         bottom: 5%;
     }
+
 }

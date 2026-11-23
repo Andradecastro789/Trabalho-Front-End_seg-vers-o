@@ -1,3 +1,6 @@
+
+
+
 import { useEffect, useState } from "react";
 
 import Button from "../components/Button";
@@ -5,6 +8,9 @@ import TestimonialCard from "../components/TestimonialCard";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import PricingCard from "../components/PricingCard";
+
+import Menu from "../assets/icons/hamburguer.svg";
+import Close from "../assets/icons/close.svg";
 
 import "../styles/utility.css";
 import "../styles/header.css";
@@ -14,16 +20,26 @@ import "../styles/testimonials.css";
 import "../styles/pricing.css";
 import "../styles/footer.css";
 
+interface Plan {
+    name: string;
+    description: string;
+    price: string;
+    period: string;
+    featured: boolean;
+    badge?: string;
+    features: string[];
+}
+
 export default function Home() {
     const [showMobileMenu, setShowMobileMenu] = useState(false);
 
-    
-    const plans = [
+    const plans: Plan[] = [
         {
             name: "Essencial",
             description: "Para quem deseja experimentar nossos sabores.",
             price: "R$ 35,00",
             period: "por pedido",
+            featured: false,
             features: [
                 "Uma caixa de docinhos",
                 "Sabores tradicionais",
@@ -49,6 +65,7 @@ export default function Home() {
             description: "Para comemorações e eventos especiais.",
             price: "Sob consulta",
             period: "por pedido",
+            featured: false,
             features: [
                 "Bolos personalizados",
                 "Docinhos para festas",
@@ -57,7 +74,8 @@ export default function Home() {
             ]
         }
     ];
-     const testimonials = [
+
+    const testimonials = [
         {
             name: "Cliente 1",
             occupation: "Cliente",
@@ -84,7 +102,7 @@ export default function Home() {
         }
     ];
 
-  
+    // Bloqueia a rolagem quando o menu mobile está aberto
     useEffect(() => {
         const html = document.querySelector("html");
 
@@ -99,22 +117,28 @@ export default function Home() {
         };
     }, [showMobileMenu]);
 
+    // Fecha o menu mobile
     function closeMenu() {
         setShowMobileMenu(false);
     }
 
     return (
         <>
-           
+            {/* HEADER */}
             <div className="header-wrapper">
                 <header className="container">
 
-                    <a href="#hero" className="logo" onClick={closeMenu}>
+                    <a
+                        href="#hero"
+                        className="logo"
+                        onClick={closeMenu}
+                    >
                         <span>Vanusa</span>
                         <small>DOCES & SABORES</small>
                     </a>
 
                     <nav className="header-nav">
+
                         <div className="desktop-only">
                             <ul className="header-links">
                                 <li><a href="#hero">Início</a></li>
@@ -127,27 +151,45 @@ export default function Home() {
                         </div>
 
                         <div className="header-actions desktop-only">
-                            <a className="login" href="#login">Login</a>
-                            <Button text="Cadastre-se" href="#contact" />
+                            <a className="login" href="#login">
+                                Login
+                            </a>
+
+                            <Button
+                                text="Cadastre-se"
+                                href="#contact"
+                            />
                         </div>
+
                     </nav>
 
-                  
+                    {/* MENU MOBILE */}
                     <div className="mobile-menu">
+
                         {!showMobileMenu ? (
+
+                            // BOTÃO ABRIR MENU
                             <button
                                 type="button"
                                 onClick={() => setShowMobileMenu(true)}
                                 className="btn-wrapper"
                                 aria-label="Abrir menu"
                                 aria-expanded={false}
+                                aria-controls="mobile-navigation"
                             >
-                                ☰
+                                <img src={Menu} alt="" />
                             </button>
+
                         ) : (
-                            <div className="mobile-menu-content">
+
+                            // CONTEÚDO DO MENU MOBILE
+                            <div
+                                className="mobile-menu-content"
+                                id="mobile-navigation"
+                            >
 
                                 <div className="mobile-menu-header">
+
                                     <a
                                         href="#hero"
                                         className="logo"
@@ -157,41 +199,94 @@ export default function Home() {
                                         <small>DOCES & SABORES</small>
                                     </a>
 
+                                    {/* BOTÃO FECHAR MENU */}
                                     <button
                                         type="button"
                                         onClick={closeMenu}
                                         className="btn-wrapper"
                                         aria-label="Fechar menu"
                                     >
-                                        ✕
+                                        <img src={Close} alt="" />
                                     </button>
+
                                 </div>
 
                                 <ul>
-                                    <li><a onClick={closeMenu} href="#hero">Início</a></li>
-                                    <li><a onClick={closeMenu} href="#bolos">Nossos Bolos</a></li>
-                                    <li><a onClick={closeMenu} href="#solution">Soluções</a></li>
-                                    <li><a onClick={closeMenu} href="#testimonials">Depoimentos</a></li>
-                                    <li><a onClick={closeMenu} href="#pricing">Produtos</a></li>
-                                    <li><a onClick={closeMenu} href="#contact">Contato</a></li>
-                                    <li><a onClick={closeMenu} className="login" href="#login">Login</a></li>
-                                    <li><a onClick={closeMenu} className="cadastro" href="#contact">Cadastre-se</a></li>
+                                    <li>
+                                        <a onClick={closeMenu} href="#hero">
+                                            Início
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a onClick={closeMenu} href="#bolos">
+                                            Nossos Bolos
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a onClick={closeMenu} href="#solution">
+                                            Soluções
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a onClick={closeMenu} href="#testimonials">
+                                            Depoimentos
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a onClick={closeMenu} href="#pricing">
+                                            Produtos
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a onClick={closeMenu} href="#contact">
+                                            Contato
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a
+                                            onClick={closeMenu}
+                                            className="login"
+                                            href="#login"
+                                        >
+                                            Login
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a
+                                            onClick={closeMenu}
+                                            className="cadastro"
+                                            href="#contact"
+                                        >
+                                            Cadastre-se
+                                        </a>
+                                    </li>
                                 </ul>
 
                             </div>
                         )}
+
                     </div>
+
                 </header>
             </div>
 
-           
+            {/* HERO */}
             <section id="hero">
+
                 <div className="hero-decoration">
                     <div className="hero-circle">♡</div>
                     <div className="hero-decoration-small">✿</div>
                 </div>
 
                 <div className="container content">
+
                     <p className="desktop-only">
                         Vanusa Doces & Sabores
                     </p>
@@ -206,16 +301,26 @@ export default function Home() {
                     </p>
 
                     <div className="hero-buttons">
-                        <Button text="Cadastre-se" href="#contact" />
-                        <Button text="Veja mais" secondary href="#solution" />
+                        <Button
+                            text="Cadastre-se"
+                            href="#contact"
+                        />
+
+                        <Button
+                            text="Veja mais"
+                            secondary
+                            href="#solution"
+                        />
                     </div>
+
                 </div>
             </section>
 
-            
+            {/* NOSSOS BOLOS */}
             <section id="bolos" className="container bolos-section">
 
                 <div className="bolos-header">
+
                     <span className="section-kicker">
                         Vanusa Doces & Sabores
                     </span>
@@ -226,6 +331,7 @@ export default function Home() {
                         Bolos preparados artesanalmente, com muito carinho
                         para deixar seus momentos ainda mais especiais.
                     </p>
+
                 </div>
 
                 <div className="bolos-grid">
@@ -238,9 +344,7 @@ export default function Home() {
 
                         <div className="bolo-card-content">
                             <h3>Bolo Especial</h3>
-                            <p>
-                                Sabor e carinho em cada pedaço.
-                            </p>
+                            <p>Sabor e carinho em cada pedaço.</p>
                             <a href="#contact">Fazer encomenda</a>
                         </div>
                     </article>
@@ -253,9 +357,7 @@ export default function Home() {
 
                         <div className="bolo-card-content">
                             <h3>Bolo Artesanal</h3>
-                            <p>
-                                Uma opção deliciosa para qualquer ocasião.
-                            </p>
+                            <p>Uma opção deliciosa para qualquer ocasião.</p>
                             <a href="#contact">Fazer encomenda</a>
                         </div>
                     </article>
@@ -268,9 +370,7 @@ export default function Home() {
 
                         <div className="bolo-card-content">
                             <h3>Bolo da Vanusa</h3>
-                            <p>
-                                Feito com ingredientes selecionados.
-                            </p>
+                            <p>Feito com ingredientes selecionados.</p>
                             <a href="#contact">Fazer encomenda</a>
                         </div>
                     </article>
@@ -278,7 +378,7 @@ export default function Home() {
                 </div>
             </section>
 
-           
+            {/* SOLUÇÕES */}
             <section className="container" id="solution">
 
                 <div className="solution-showcase">
@@ -307,7 +407,6 @@ export default function Home() {
 
                     <div className="solution-feature-cards">
 
-                        
                         <article className="solution-feature-card">
 
                             <img
@@ -327,7 +426,6 @@ export default function Home() {
 
                         </article>
 
-                        
                         <article className="solution-feature-card">
 
                             <img
@@ -350,7 +448,6 @@ export default function Home() {
                     </div>
                 </div>
 
-                
                 <div className="solution-detail">
 
                     <div className="solution-visual">
@@ -404,13 +501,16 @@ export default function Home() {
                         </a>
 
                     </div>
+
                 </div>
 
             </section>
 
+            {/* DEPOIMENTOS */}
             <section id="testimonials">
 
                 <header>
+
                     <span>
                         <p className="desktop-only">
                             Conselho de quem conhece
@@ -423,6 +523,7 @@ export default function Home() {
                         Quem experimenta nossos produtos conhece
                         a qualidade e o carinho presentes em cada receita.
                     </p>
+
                 </header>
 
                 <section className="carousel">
@@ -442,8 +543,10 @@ export default function Home() {
 
                     </div>
 
-                  
-                    <div className="carousel-content" aria-hidden="true">
+                    <div
+                        className="carousel-content"
+                        aria-hidden="true"
+                    >
 
                         {testimonials.map((client) => (
                             <TestimonialCard
@@ -459,21 +562,27 @@ export default function Home() {
                     </div>
 
                 </section>
+
             </section>
 
-           
+            {/* PRODUTOS */}
             <section id="pricing" className="container">
 
                 <header>
-                    <p className="desktop-only">Planos e preços</p>
+
+                    <p className="desktop-only">
+                        Planos e preços
+                    </p>
+
                     <h2>Nossos produtos</h2>
+
                 </header>
 
                 <section className="even-columns gap-1.5">
 
-                    {plans.map((plan, index) => (
+                    {plans.map((plan) => (
                         <PricingCard
-                            key={index}
+                            key={plan.name}
                             name={plan.name}
                             description={plan.description}
                             price={plan.price}
@@ -485,11 +594,13 @@ export default function Home() {
                     ))}
 
                 </section>
+
             </section>
 
-           
+            {/* CONTATO */}
             <Contact />
 
+            {/* RODAPÉ */}
             <Footer />
 
         </>
